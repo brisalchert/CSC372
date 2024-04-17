@@ -32,6 +32,6 @@ public class Manager extends Employee {
     @Override
     public void employeeSummary() {
         super.employeeSummary();
-        System.out.println("\tDepartment : " + department);
+        System.out.println("\tDepartment: " + department);
     }
 }
