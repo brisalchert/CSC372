@@ -85,6 +85,6 @@ public class Employee {
         System.out.println("---------------------------------------------");
         System.out.println("\tFirst Name: " + firstName);
         System.out.println("\tLast Name: " + lastName);
-        System.out.println("\tSalary: " + salary);
+        System.out.println("\tSalary: $" + salary);
     }
 }
