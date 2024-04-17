@@ -44,4 +44,12 @@ public class Employee {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
+    public void employeeSummary() {
+        System.out.println("Info for employee with ID: " + employeeID);
+        System.out.println("---------------------------------------------");
+        System.out.println("\tFirst Name: " + firstName);
+        System.out.println("\tLast Name: " + lastName);
+        System.out.println("\tSalary: " + salary);
+    }
 }
