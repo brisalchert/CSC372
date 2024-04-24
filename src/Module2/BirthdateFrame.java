@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class BirthdateFrame extends JFrame implements ActionListener {
@@ -122,7 +123,8 @@ public class BirthdateFrame extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(this, "Invalid date");
                 }
             }
-            catch (NumberFormatException error) {
+            // Catch both potential Scanner exceptions
+            catch (NumberFormatException | NoSuchElementException error) {
                 JOptionPane.showMessageDialog(this, "Invalid input! Format: MM/DD/YYYY");
             }
         }
@@ -133,10 +135,16 @@ public class BirthdateFrame extends JFrame implements ActionListener {
 
         // If input was successfully obtained, calculate age
         if (birthdate != null) {
-            age = Period.between(birthdate, LocalDate.now()).getYears();
+            if (birthdate.isAfter(LocalDate.now())) {
+                JOptionPane.showMessageDialog(this, "Birthdate cannot be after current date");
+                ageField.setText("");
+            }
+            else {
+                age = Period.between(birthdate, LocalDate.now()).getYears();
 
-            // Set ageField to display the user's age
-            ageField.setText(Integer.toString(age));
+                // Set ageField to display the user's age
+                ageField.setText(Integer.toString(age));
+            }
         }
     }
 }
