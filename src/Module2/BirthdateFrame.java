@@ -49,21 +49,21 @@ public class BirthdateFrame extends JFrame implements ActionListener {
         layoutConstraints.gridx = 0;
         layoutConstraints.gridy = 0;
         layoutConstraints.fill = GridBagConstraints.HORIZONTAL;
-        layoutConstraints.insets = new Insets(10, 10, 10, 10);
+        layoutConstraints.insets = new Insets(20, 10, 10, 10);
         birthdatePanel.add(birthdateLabel, layoutConstraints);
 
         // Create layout constraints for birthdateField
         layoutConstraints = new GridBagConstraints();
         layoutConstraints.gridx = 1;
         layoutConstraints.gridy = 0;
-        layoutConstraints.insets = new Insets(10, 10, 10, 10);
+        layoutConstraints.insets = new Insets(20, 10, 10, 10);
         birthdatePanel.add(birthdateField, layoutConstraints);
 
         // Create layout constraints for calculateAgeButton
         layoutConstraints = new GridBagConstraints();
         layoutConstraints.gridx = 2;
         layoutConstraints.gridy = 0;
-        layoutConstraints.insets = new Insets(10, 10, 10, 10);
+        layoutConstraints.insets = new Insets(20, 10, 10, 10);
         birthdatePanel.add(calculateAgeButton, layoutConstraints);
 
         // Create layout constraints for ageLabel
@@ -71,14 +71,14 @@ public class BirthdateFrame extends JFrame implements ActionListener {
         layoutConstraints.gridx = 0;
         layoutConstraints.gridy = 1;
         layoutConstraints.anchor = GridBagConstraints.LINE_END;
-        layoutConstraints.insets = new Insets(10, 10, 10, 10);
+        layoutConstraints.insets = new Insets(10, 10, 20, 10);
         birthdatePanel.add(ageLabel, layoutConstraints);
 
         // Create layout constraints for ageField
         layoutConstraints = new GridBagConstraints();
         layoutConstraints.gridx = 1;
         layoutConstraints.gridy = 1;
-        layoutConstraints.insets = new Insets(10, 10, 10, 10);
+        layoutConstraints.insets = new Insets(10, 10, 20, 10);
         birthdatePanel.add(ageField, layoutConstraints);
 
         // Add the panel to the frame and pack
