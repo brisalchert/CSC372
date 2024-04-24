@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Scanner;
@@ -113,7 +114,13 @@ public class BirthdateFrame extends JFrame implements ActionListener {
                 day = Integer.parseInt(inputScanner.next());
                 year = Integer.parseInt(inputScanner.next());
 
-                birthdate = LocalDate.of(year, month, day);
+                // Attempt to create a valid LocalDate from the user input
+                try {
+                    birthdate = LocalDate.of(year, month, day);
+                }
+                catch (DateTimeException error) {
+                    JOptionPane.showMessageDialog(this, "Invalid date");
+                }
             }
             catch (NumberFormatException error) {
                 JOptionPane.showMessageDialog(this, "Invalid input! Format: MM/DD/YYYY");
