@@ -19,6 +19,9 @@ public class BirthdateFrame extends JFrame implements ActionListener {
     private JButton calculateAgeButton;
     private GridBagConstraints layoutConstraints;
 
+    /**
+     * Constructor: Creates a BirthdateFrame with all its components
+     */
     public BirthdateFrame() {
         // Set frame title
         setTitle("Age Calculator");
@@ -88,6 +91,10 @@ public class BirthdateFrame extends JFrame implements ActionListener {
         this.pack();
     }
 
+    /**
+     * Attempts to calculate the user's age based on their input when the button is pressed
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         // Create Date objects to perform calculation
