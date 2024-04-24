@@ -12,8 +12,8 @@
 
 package Module2;
 
-public class BirthDateGUI {
+public class BirthdateGUI {
     public static void main(String[] args) {
-        
+
     }
 }
