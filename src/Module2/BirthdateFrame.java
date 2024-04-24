@@ -90,7 +90,6 @@ public class BirthdateFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Create Date objects to perform calculation
         LocalDate birthdate = null;
-        LocalDate currentDate = LocalDate.now();
         String userInput;
         Scanner inputScanner;
         int day;
