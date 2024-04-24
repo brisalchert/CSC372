@@ -21,6 +21,7 @@ public class BirthdateFrame extends JFrame implements ActionListener {
 
         // Create a text field for the user's date of birth
         birthdateField = new JTextField();
+        birthdateField.setColumns(10);
 
         // Create a button for calculating the user's age
         calculateAgeButton = new JButton("Calculate Age");
@@ -38,6 +39,13 @@ public class BirthdateFrame extends JFrame implements ActionListener {
         layoutConstraints.anchor = GridBagConstraints.LINE_END;
         layoutConstraints.insets = new Insets(10, 10, 10, 10);
         birthdatePanel.add(birthdateLabel, layoutConstraints);
+
+        // Create layout constraints for birthdateField
+        layoutConstraints = new GridBagConstraints();
+        layoutConstraints.gridx = 1;
+        layoutConstraints.gridy = 0;
+        layoutConstraints.insets = new Insets(10, 10, 10, 10);
+        birthdatePanel.add(birthdateField, layoutConstraints);
 
         // Add the panel to the frame and pack
         this.add(birthdatePanel);
