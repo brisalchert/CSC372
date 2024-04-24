@@ -12,8 +12,13 @@
 
 package Module2;
 
+import javax.swing.*;
+
 public class BirthdateGUI {
     public static void main(String[] args) {
+        BirthdateFrame birthdateFrame = new BirthdateFrame();
 
+        birthdateFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        birthdateFrame.setVisible(true);
     }
 }
