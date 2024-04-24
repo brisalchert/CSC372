@@ -8,12 +8,14 @@ import java.text.NumberFormat;
 
 public class SquareNumberFrame extends JFrame implements ActionListener {
     private JPanel squarePanel;
+    private JPanel visibilityPanel;
     private GridBagConstraints layoutConstraints;
     private JLabel baseNumberLabel;
     private JLabel squareNumberLabel;
     private JFormattedTextField baseNumberTextField;
     private JTextField squareNumberTextField;
     private JButton squareButton;
+    private JButton togglePanelVisibleButton;
 
     public SquareNumberFrame() {
         // Set frame title
@@ -28,7 +30,7 @@ public class SquareNumberFrame extends JFrame implements ActionListener {
         // Create a formatted text field for the base number with integer format
         baseNumberTextField = new JFormattedTextField(NumberFormat.getIntegerInstance());
         baseNumberTextField.setColumns(10);
-        baseNumberTextField.setText("0");
+        baseNumberTextField.setValue(0);
 
         // Create a non-modifiable text field for the squared number
         squareNumberTextField = new JTextField(10);
@@ -38,6 +40,14 @@ public class SquareNumberFrame extends JFrame implements ActionListener {
         // Create a button for squaring the base number
         squareButton = new JButton("Square");
         squareButton.addActionListener(this);
+
+        // Create a button for toggling panel visibility
+        togglePanelVisibleButton = new JButton("Show/Hide Panel");
+        togglePanelVisibleButton.addActionListener(this);
+
+        // Create another panel for the visibility toggle button
+        visibilityPanel = new JPanel();
+        visibilityPanel.setLayout(new GridBagLayout());
 
         // Create a panel to store the components with GridBag layout
         squarePanel = new JPanel();
@@ -82,21 +92,34 @@ public class SquareNumberFrame extends JFrame implements ActionListener {
         layoutConstraints.insets = new Insets(10, 10, 10, 10);
         squarePanel.add(squareNumberTextField, layoutConstraints);
 
-        // Add the panel to the frame and pack
-        this.add(squarePanel);
+        // Create layout constraints for the visibility toggle button
+        layoutConstraints = new GridBagConstraints();
+        layoutConstraints.gridx = 0;
+        layoutConstraints.gridy = 0;
+        layoutConstraints.insets = new Insets(10, 10, 10, 10);
+        visibilityPanel.add(togglePanelVisibleButton, layoutConstraints);
+
+        // Add the panels to the frame and pack
+        this.add(visibilityPanel, BorderLayout.NORTH);
+        this.add(squarePanel, BorderLayout.CENTER);
         this.pack();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int baseNumber;
-        int squareNumber;
+        if (e.getSource() == squareButton) {
+            int baseNumber;
+            int squareNumber;
 
-        // Get the base number from the formatted text field
-        baseNumber = ((Number) baseNumberTextField.getValue()).intValue();
+            // Get the base number from the formatted text field
+            baseNumber = ((Number) baseNumberTextField.getValue()).intValue();
 
-        // Square the number and put the output in the square number text field
-        squareNumber = baseNumber * baseNumber;
-        squareNumberTextField.setText(String.valueOf(squareNumber));
+            // Square the number and put the output in the square number text field
+            squareNumber = baseNumber * baseNumber;
+            squareNumberTextField.setText(String.valueOf(squareNumber));
+        }
+        else {
+            squarePanel.setVisible(!squarePanel.isVisible());
+        }
     }
 }
