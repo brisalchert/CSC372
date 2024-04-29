@@ -41,18 +41,19 @@ public class CardLayoutFrame extends JFrame implements ItemListener {
         secondCard.add(secondCardLabel);
 
         // Add the cards to the cardPanel
-        cardPanel.add(firstCard);
-        cardPanel.add(secondCard);
+        cardPanel.add(firstCard, firstCardString);
+        cardPanel.add(secondCard, secondCardString);
 
         // Create a label for the comboBox
         comboBoxLabel = new JLabel("Choose a card:");
 
-        // Create a String array of card labels to store in the comboBox
+        // Create a String array of card names to store in the comboBox
         String[] comboBoxLabels = {firstCardString, secondCardString};
 
-        // Create the combo box
+        // Create the combo box with an item listener
         comboBox = new JComboBox(comboBoxLabels);
         comboBox.setEditable(false);
+        comboBox.addItemListener(this);
 
         // Create gridBagConstraints for insets for items
         constraints = new GridBagConstraints();
@@ -69,6 +70,10 @@ public class CardLayoutFrame extends JFrame implements ItemListener {
 
     @Override
     public void itemStateChanged(ItemEvent e) {
+        // Get the cardLayout object of the cardPanel
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
 
+        // Set the cardLayout to show the currently selected card
+        cardLayout.show(cardPanel, e.getItem().toString());
     }
 }
