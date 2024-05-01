@@ -92,6 +92,11 @@ public class MenuUserInterface extends Application {
             borderPane.setStyle("-fx-background-color:" + randomGreenHue + ";");
         });
 
+        // Add functionality for exit option
+        exitItem.setOnAction(actionEvent -> {
+            System.exit(0);
+        });
+
         // Create a MenuBar to hold the Menu
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().add(menu);
