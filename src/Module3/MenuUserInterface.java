@@ -8,6 +8,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.util.Random;
+
 public class MenuUserInterface extends Application {
     @Override
     public void start(Stage stage) {
@@ -30,6 +32,7 @@ public class MenuUserInterface extends Application {
         menu.getItems().add(exportItem);
 
         MenuItem backgroundColorItem = new MenuItem("Set Background Color to Green");
+        backgroundColorItem.setStyle("-fx-background-color: " + getRandomGreenHue() + ";");
         menu.getItems().add(backgroundColorItem);
 
         MenuItem exitItem = new MenuItem("Exit Program");
@@ -46,6 +49,30 @@ public class MenuUserInterface extends Application {
         // Set the scene and show the stage
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * Gets a String representation of a random hue of green
+     * @return a String in "rgb(*,*,*)" format for a hue of green
+     */
+    public String getRandomGreenHue() {
+        Random random = new Random();
+        int green = 255;
+        int hueFactor;
+        boolean red;
+
+        // Get a random value from 0 to 128 for either red or blue
+        hueFactor = random.nextInt(129);
+
+        // Choose whether the value will be for red or blue
+        red = random.nextBoolean();
+
+        // Return a String rgb representation of the color
+        if (red) {
+            return "rgb(" + hueFactor + "," + green + "," + 0 + ")";
+        }
+
+        return "rgb(" + 0 + "," + green + "," + hueFactor + ")";
     }
 
     public static void main(String[] args) {
