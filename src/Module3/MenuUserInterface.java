@@ -49,7 +49,8 @@ public class MenuUserInterface extends Application {
         menu.getItems().add(exportItem);
 
         MenuItem backgroundColorItem = new MenuItem("Set Background Color to Green");
-        backgroundColorItem.setStyle("-fx-background-color: " + getRandomGreenHue() + ";");
+        String randomGreenHue = getRandomGreenHue();
+        backgroundColorItem.setStyle("-fx-background-color: " + randomGreenHue + ";");
         menu.getItems().add(backgroundColorItem);
 
         MenuItem exitItem = new MenuItem("Exit Program");
@@ -84,6 +85,11 @@ public class MenuUserInterface extends Application {
             Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
             printAlert.setContentText("Date & time successfully exported to log.txt");
             printAlert.showAndWait();
+        });
+
+        // Add functionality for background color option
+        backgroundColorItem.setOnAction(actionEvent -> {
+            borderPane.setStyle("-fx-background-color:" + randomGreenHue + ";");
         });
 
         // Create a MenuBar to hold the Menu
