@@ -67,7 +67,7 @@ public class MenuUserInterface extends Application {
         // Add functionality for text box export to file option
         exportItem.setOnAction(actionEvent -> {
             FileOutputStream outputStream = null;
-            PrintWriter printWriter = null;
+            PrintWriter printWriter;
 
             try {
                 outputStream = new FileOutputStream("log.txt");
@@ -78,16 +78,18 @@ public class MenuUserInterface extends Application {
                 fileNotFoundAlert.showAndWait();
             }
 
-            printWriter = new PrintWriter(outputStream);
+            if (outputStream != null) {
+                printWriter = new PrintWriter(outputStream);
 
-            // Print text box contents to log.txt
-            printWriter.println(dateAndTimeField.getText());
+                // Print text box contents to log.txt
+                printWriter.println(dateAndTimeField.getText());
 
-            printWriter.close();
+                printWriter.close();
 
-            Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
-            printAlert.setContentText("Textbox contents successfully exported to log.txt");
-            printAlert.showAndWait();
+                Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
+                printAlert.setContentText("Textbox contents successfully exported to log.txt");
+                printAlert.showAndWait();
+            }
         });
 
         // Add functionality for background color option
