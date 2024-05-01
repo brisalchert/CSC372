@@ -1,13 +1,18 @@
 package Module3;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class MenuUserInterface extends Application {
@@ -20,6 +25,18 @@ public class MenuUserInterface extends Application {
 
         // Create a BorderPane to store UI components
         BorderPane borderPane = new BorderPane();
+        borderPane.setStyle("-fx-background-color: lightgray;");
+
+        // Create a text box for the date and time
+        TextField dateAndTimeField = new TextField();
+        dateAndTimeField.setPrefColumnCount(18);
+        dateAndTimeField.setEditable(false);
+
+        // Create an HBox to hold the text box
+        HBox textBox = new HBox();
+        textBox.setAlignment(Pos.CENTER);
+        textBox.getChildren().add(dateAndTimeField);
+        borderPane.setCenter(textBox);
 
         // Create a Menu for the top of the BorderPane
         Menu menu = new Menu("Menu");
@@ -37,6 +54,14 @@ public class MenuUserInterface extends Application {
 
         MenuItem exitItem = new MenuItem("Exit Program");
         menu.getItems().add(exitItem);
+
+        // Add functionality for date & time option
+        dateItem.setOnAction(actionEvent -> {
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+            dateAndTimeField.setText("Today's Date: " + formatter.format(date));
+        });
 
         // Create a MenuBar to hold the Menu
         MenuBar menuBar = new MenuBar();
