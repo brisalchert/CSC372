@@ -3,14 +3,14 @@ package Module3;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -61,6 +61,29 @@ public class MenuUserInterface extends Application {
             SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
             dateAndTimeField.setText("Today's Date: " + formatter.format(date));
+        });
+
+        // Add functionality for text box export to file option
+        exportItem.setOnAction(actionEvent -> {
+            FileOutputStream outputStream = null;
+            PrintWriter printWriter = null;
+
+            try {
+                outputStream = new FileOutputStream("log.txt");
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            printWriter = new PrintWriter(outputStream);
+
+            // Print text box contents to log.txt
+            printWriter.println(dateAndTimeField.getText());
+
+            printWriter.close();
+
+            Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
+            printAlert.setContentText("Date & time successfully exported to log.txt");
+            printAlert.showAndWait();
         });
 
         // Create a MenuBar to hold the Menu
