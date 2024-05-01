@@ -72,7 +72,10 @@ public class MenuUserInterface extends Application {
             try {
                 outputStream = new FileOutputStream("log.txt");
             } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+                Alert fileNotFoundAlert = new Alert(Alert.AlertType.ERROR);
+                fileNotFoundAlert.setTitle("File Not Found");
+                fileNotFoundAlert.setContentText("Could not access log.txt");
+                fileNotFoundAlert.showAndWait();
             }
 
             printWriter = new PrintWriter(outputStream);
@@ -83,7 +86,7 @@ public class MenuUserInterface extends Application {
             printWriter.close();
 
             Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
-            printAlert.setContentText("Date & time successfully exported to log.txt");
+            printAlert.setContentText("Textbox contents successfully exported to log.txt");
             printAlert.showAndWait();
         });
 
