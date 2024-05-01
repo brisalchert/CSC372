@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -20,6 +21,19 @@ public class MenuUserInterface extends Application {
 
         // Create a Menu for the top of the BorderPane
         Menu menu = new Menu("Menu");
+
+        // Create MenuItems for the Menu
+        MenuItem dateItem = new MenuItem("Print Date & Time");
+        menu.getItems().add(dateItem);
+
+        MenuItem exportItem = new MenuItem("Export Textbox Contents to File");
+        menu.getItems().add(exportItem);
+
+        MenuItem backgroundColorItem = new MenuItem("Set Background Color to Green");
+        menu.getItems().add(backgroundColorItem);
+
+        MenuItem exitItem = new MenuItem("Exit Program");
+        menu.getItems().add(exitItem);
 
         // Create a MenuBar to hold the Menu
         MenuBar menuBar = new MenuBar();
