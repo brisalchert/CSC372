@@ -39,7 +39,8 @@ public class MenuUserInterface extends Application {
 
         // Create a BorderPane to store UI components
         BorderPane borderPane = new BorderPane();
-        borderPane.setStyle("-fx-background-color: lightgray;");
+        String randomGreenHue = getRandomGreenHue();
+        borderPane.setStyle("-fx-background-color: " + randomGreenHue + ";");
 
         // Create a text box for the date and time
         TextField dateAndTimeField = new TextField();
@@ -62,9 +63,7 @@ public class MenuUserInterface extends Application {
         MenuItem exportItem = new MenuItem("Export Textbox Contents to File");
         menu.getItems().add(exportItem);
 
-        MenuItem backgroundColorItem = new MenuItem("Set Background Color to Green");
-        String randomGreenHue = getRandomGreenHue();
-        backgroundColorItem.setStyle("-fx-background-color: " + randomGreenHue + ";");
+        MenuItem backgroundColorItem = new MenuItem("Change Background Color to Random Hue of Green");
         menu.getItems().add(backgroundColorItem);
 
         MenuItem exitItem = new MenuItem("Exit Program");
@@ -108,7 +107,8 @@ public class MenuUserInterface extends Application {
 
         // Add functionality for background color option
         backgroundColorItem.setOnAction(actionEvent -> {
-            borderPane.setStyle("-fx-background-color:" + randomGreenHue + ";");
+            String newRandomGreenHue = getRandomGreenHue();
+            borderPane.setStyle("-fx-background-color:" + newRandomGreenHue + ";");
         });
 
         // Add functionality for exit option
