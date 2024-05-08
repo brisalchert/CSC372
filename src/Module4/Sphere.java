@@ -29,6 +29,10 @@ public class Sphere extends Shape {
         return ((4.0/3.0) * Math.PI * Math.pow(radius, 3));
     }
 
+    /**
+     * Formats a string with the Sphere's surface area and volume
+     * @return a string representation of the Sphere's characteristics
+     */
     public String toString() {
         StringBuilder result = new StringBuilder();
 
