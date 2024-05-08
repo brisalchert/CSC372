@@ -1,7 +1,5 @@
 package Module4;
 
-import java.math.BigDecimal;
-
 public class Cylinder extends Shape {
     private double radius;
     private double height;
@@ -40,20 +38,9 @@ public class Cylinder extends Shape {
      */
     public String toString() {
         StringBuilder result = new StringBuilder();
-        BigDecimal roundingDecimal;
-        double surfaceArea;
-        double volume;
 
-        // Round the surface area to 4 places
-        roundingDecimal = new BigDecimal(String.format("%.4f", surfaceArea()));
-        surfaceArea = roundingDecimal.doubleValue();
-
-        // Round the volume to 4 places
-        roundingDecimal = new BigDecimal(String.format("%.4f", volume()));
-        volume = roundingDecimal.doubleValue();
-
-        result.append("Cylinder surface area:\t" + surfaceArea + " units^2\n");
-        result.append("Cylinder volume:\t\t" + volume + " units^3");
+        result.append(String.format("Cylinder surface area: %11.4f", surfaceArea()) + " units^2\n");
+        result.append(String.format("Cylinder volume: %17.4f", volume()) + " units^3");
 
         return result.toString();
     }

@@ -1,7 +1,5 @@
 package Module4;
 
-import java.math.BigDecimal;
-
 public class Cone extends Shape {
     private double radius;
     private double height;
@@ -40,20 +38,9 @@ public class Cone extends Shape {
      */
     public String toString() {
         StringBuilder result = new StringBuilder();
-        BigDecimal roundingDecimal;
-        double surfaceArea;
-        double volume;
 
-        // Round the surface area to 4 places
-        roundingDecimal = new BigDecimal(String.format("%.4f", surfaceArea()));
-        surfaceArea = roundingDecimal.doubleValue();
-
-        // Round the volume to 4 places
-        roundingDecimal = new BigDecimal(String.format("%.4f", volume()));
-        volume = roundingDecimal.doubleValue();
-
-        result.append("Cone surface area:\t\t" + surfaceArea + " units^2\n");
-        result.append("Cone volume:\t\t\t" + volume + " units^3");
+        result.append(String.format("Cone surface area: %15.4f", surfaceArea()) + " units^2\n");
+        result.append(String.format("Cone volume: %21.4f", volume()) + " units^3");
 
         return result.toString();
     }
