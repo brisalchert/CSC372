@@ -1,5 +1,7 @@
 package Module4;
 
+import java.math.BigDecimal;
+
 public class Sphere extends Shape {
     private double radius;
 
@@ -35,9 +37,20 @@ public class Sphere extends Shape {
      */
     public String toString() {
         StringBuilder result = new StringBuilder();
+        BigDecimal roundingDecimal;
+        double surfaceArea;
+        double volume;
 
-        result.append("Sphere surface area: " + surfaceArea() + " units^2\n");
-        result.append("Sphere volume: " + volume() + " units^3");
+        // Round the surface area to 4 places
+        roundingDecimal = new BigDecimal(String.format("%.4f", surfaceArea()));
+        surfaceArea = roundingDecimal.doubleValue();
+
+        // Round the volume to 4 places
+        roundingDecimal = new BigDecimal(String.format("%.4f", volume()));
+        volume = roundingDecimal.doubleValue();
+
+        result.append("Sphere surface area:\t" + surfaceArea + " units^2\n");
+        result.append("Sphere volume:\t\t\t" + volume + " units^3");
 
         return result.toString();
     }

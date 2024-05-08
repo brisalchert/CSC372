@@ -9,7 +9,7 @@ public class ShapeArray {
 
         // Print header text
         System.out.println("SHAPE INFO:");
-        System.out.println("--------------------------------------------------");
+        System.out.println("------------------------------------------");
 
         // Print information for each shape
         for (Shape shape : shapeArray) {
