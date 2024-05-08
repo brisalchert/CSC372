@@ -39,8 +39,8 @@ public class Cone extends Shape {
     public String toString() {
         StringBuilder result = new StringBuilder();
 
-        result.append("Cone surface area: " + surfaceArea() + "units^2\n");
-        result.append("Cone volume: " + volume() + "units^3");
+        result.append("Cone surface area: " + surfaceArea() + " units^2\n");
+        result.append("Cone volume: " + volume() + " units^3");
 
         return result.toString();
     }

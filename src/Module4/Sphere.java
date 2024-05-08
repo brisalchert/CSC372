@@ -36,8 +36,8 @@ public class Sphere extends Shape {
     public String toString() {
         StringBuilder result = new StringBuilder();
 
-        result.append("Sphere surface area: " + surfaceArea() + "units^2\n");
-        result.append("Sphere volume: " + volume() + "units^3");
+        result.append("Sphere surface area: " + surfaceArea() + " units^2\n");
+        result.append("Sphere volume: " + volume() + " units^3");
 
         return result.toString();
     }

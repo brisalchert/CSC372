@@ -39,8 +39,8 @@ public class Cylinder extends Shape {
     public String toString() {
         StringBuilder result = new StringBuilder();
 
-        result.append("Cylinder surface area: " + surfaceArea() + "units^2\n");
-        result.append("Cylinder volume: " + volume() + "units^3");
+        result.append("Cylinder surface area: " + surfaceArea() + " units^2\n");
+        result.append("Cylinder volume: " + volume() + " units^3");
 
         return result.toString();
     }
