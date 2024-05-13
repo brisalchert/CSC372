@@ -23,7 +23,7 @@ public class RecursiveProduct {
         }
 
         // Print the product of the numbers
-        System.out.println("Product of the five numbers: " + recursiveProduct(numbers, 0).doubleValue());
+        System.out.println("Product of the five numbers: " + recursiveProduct(numbers, 0));
     }
 
     /**
