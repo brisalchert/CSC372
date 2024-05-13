@@ -25,6 +25,12 @@ public class RecursiveProduct {
         System.out.println("Product of the five numbers: " + recursiveProduct(numbers, 0));
     }
 
+    /**
+     * Recursively obtains the product of all values in the array numbers starting from the specified index
+     * @param numbers the double array of values
+     * @param currentIndex the current index in the array (or starting index for first call)
+     * @return the product of the values
+     */
     public static double recursiveProduct(double[] numbers, int currentIndex) {
         // Base case: index is the last number, so return the number
         if (currentIndex == (numbers.length - 1)) {
