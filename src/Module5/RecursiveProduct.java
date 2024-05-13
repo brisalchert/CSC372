@@ -8,6 +8,7 @@
 
 package Module5;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class RecursiveProduct {
@@ -22,7 +23,7 @@ public class RecursiveProduct {
         }
 
         // Print the product of the numbers
-        System.out.println("Product of the five numbers: " + recursiveProduct(numbers, 0));
+        System.out.println("Product of the five numbers: " + recursiveProduct(numbers, 0).doubleValue());
     }
 
     /**
@@ -31,13 +32,16 @@ public class RecursiveProduct {
      * @param currentIndex the current index in the array (or starting index for first call)
      * @return the product of the values
      */
-    public static double recursiveProduct(double[] numbers, int currentIndex) {
+    public static BigDecimal recursiveProduct(double[] numbers, int currentIndex) {
+        // Convert the current value to a BigDecimal (to mitigate double-related rounding errors)
+        BigDecimal currentNumber = BigDecimal.valueOf(numbers[currentIndex]);
+
         // Base case: index is the last number, so return the number
         if (currentIndex == (numbers.length - 1)) {
-            return numbers[currentIndex];
+            return currentNumber;
         }
 
         // Recursive case: return the current number multiplied by the remaining numbers
-        return numbers[currentIndex] * recursiveProduct(numbers, currentIndex + 1);
+        return currentNumber.multiply(recursiveProduct(numbers, currentIndex + 1));
     }
 }
