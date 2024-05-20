@@ -10,4 +10,8 @@ public class Student {
         this.name = name;
         this.address = address;
     }
+
+    public String toString() {
+        return "Roll No: " + this.rollno + ", Name: " + this.name + ", Address: " + this.address;
+    }
 }
