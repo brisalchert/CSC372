@@ -1,10 +1,19 @@
 package Module6;
 
+import java.util.Arrays;
+
 public class SearchingExample {
     public static void main(String[] args) {
-        int[] data = {1, 3, 6, 8, 12, 13, 24, 27, 36, 40, 67};
+        int[] data = {67, 81, 23, 5, 78, 45, 61, 3, 98, 63};
 
-        binarySearch(data, 6);
+        // Try binary search on unsorted data
+        binarySearch(data, 23);
+
+        // Sort the data
+        Arrays.sort(data);
+
+        // Try binary search on sorted data
+        binarySearch(data, 23);
     }
 
     public static void binarySearch(int[] data, int target) {
