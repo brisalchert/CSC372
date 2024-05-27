@@ -1,6 +1,7 @@
 package Module7;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ListAndMapExample {
@@ -22,6 +23,24 @@ public class ListAndMapExample {
         // Print the temperatures for each day, using the index in the list to obtain the weekdays
         for (int index = 0; index < temperatureList.size(); index++) {
             System.out.println("Temperature for " + weekdays[index] + ": " + temperatureList.get(index));
+        }
+
+        System.out.println();
+
+        // Implement a HashMap for storing temperatures
+        HashMap<String, Double> temperatureMap = new HashMap<>();
+
+        // Add the temperatures for each day to the HashMap
+        for (int index = 0; index < weekdays.length; index++) {
+            temperatureMap.put(weekdays[index], averageTemperatures[index]);
+        }
+
+        System.out.println("TEMPERATURES USING HASHMAP:");
+        System.out.println("-----------------------------------------");
+
+        // Print the temperatures for each day using the keys and values of the HashMap
+        for (String key : temperatureMap.keySet()) {
+            System.out.println("Temperature for " + key + ": " + temperatureMap.get(key));
         }
     }
 }
