@@ -64,4 +64,14 @@ public class Student {
     public void setGpa(double gpa) {
         this.gpa = gpa;
     }
+
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append("Student Name: " + name + "\n");
+        result.append("--Address: " + address + "\n");
+        result.append("--GPA: " + gpa + "\n");
+
+        return result.toString();
+    }
 }
