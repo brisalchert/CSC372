@@ -1,6 +1,9 @@
 # Log file from Module 3
 log.txt
 
+# Log file from Module 8
+StudentData.txt
+
 # Microsoft Word file
 *.docx
 
