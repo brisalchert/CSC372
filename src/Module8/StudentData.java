@@ -65,6 +65,17 @@ public class StudentData {
             System.out.print("Enter data for a new student? (Y/N): ");
             userChoice = input.nextLine().toLowerCase();
         }
+
+        System.out.println();
+
+        // Sort the Students in ascending order
+        studentList.sort(new NameComparator());
+
+        for (Student student : studentList) {
+            System.out.println(student.getName());
+        }
+
+        input.close();
     }
 
     public static boolean validateGPA(Scanner input, double gpa) {
@@ -86,7 +97,7 @@ public class StudentData {
             System.out.println("Invalid input -- GPA must be a number.");
         }
         finally {
-            // Clear the input line for the next iteration of the loop
+            // Clear the input line for the next iteration of the while loop
             input.nextLine();
         }
 
