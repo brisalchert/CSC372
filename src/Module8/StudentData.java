@@ -49,6 +49,13 @@ public class StudentData {
                 while (!gpaValid) {
                     gpaValid = validateGPA(input, gpa);
                 }
+
+                // Create a new Student object, add it to the LinkedList, and confirm to the user
+                Student student = new Student(name, address, gpa);
+                studentList.add(student);
+
+                System.out.println("Student \"" + name + "\" successfully added to list.");
+                System.out.println();
             }
             else {
                 System.out.println("Invalid input -- please enter Y or N.");
