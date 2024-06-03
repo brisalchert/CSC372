@@ -38,7 +38,7 @@ public class StudentData {
             if (userChoice.equals("y")) {
                 String name;
                 String address;
-                double gpa = 0;
+                double gpa;
 
                 // Get the Student's name
                 System.out.print("Enter student name: ");
@@ -49,11 +49,7 @@ public class StudentData {
                 address = input.nextLine();
 
                 // Get the Student's gpa, validating the input and requesting again on invalid input
-                boolean gpaValid = validateGPA(input, gpa);
-
-                while (!gpaValid) {
-                    gpaValid = validateGPA(input, gpa);
-                }
+                gpa = validateGPA(input);
 
                 // Create a new Student object, add it to the LinkedList, and confirm to the user
                 Student student = new Student(name, address, gpa);
@@ -94,31 +90,34 @@ public class StudentData {
         System.out.println("Student data successfully exported to StudentData.txt");
     }
 
-    public static boolean validateGPA(Scanner input, double gpa) {
+    public static double validateGPA(Scanner input) {
         boolean gpaValid = false;
+        double gpa = 0;
 
-        System.out.print("Enter student GPA: ");
-        try {
-            gpa = input.nextDouble();
+        while (!gpaValid) {
+            System.out.print("Enter student GPA: ");
+            try {
+                gpa = input.nextDouble();
 
-            // Check that the GPA is within the valid range (0.0 - 4.0)
-            if (gpa < 0 || gpa > 4) {
-                System.out.println("Invalid input -- GPA must be between 0.0 and 4.0.");
+                // Check that the GPA is within the valid range (0.0 - 4.0)
+                if (gpa < 0 || gpa > 4) {
+                    System.out.println("Invalid input -- GPA must be between 0.0 and 4.0.");
+                }
+                else {
+                    gpaValid = true;
+                }
             }
-            else {
-                gpaValid = true;
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input -- GPA must be a number.");
+            }
+            finally {
+                // Clear the input line for the next iteration of the while loop
+                input.nextLine();
             }
         }
-        catch (InputMismatchException e) {
-            System.out.println("Invalid input -- GPA must be a number.");
-        }
-        finally {
-            // Clear the input line for the next iteration of the while loop
-            input.nextLine();
-        }
 
-        // Return true if a valid gpa was chosen
-        return gpaValid;
+        // Return the valid gpa
+        return gpa;
     }
 
     public static void printStudentData(PrintWriter printWriter, LinkedList<Student> studentList) {
