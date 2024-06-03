@@ -15,6 +15,9 @@
 
 package Module8;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -22,6 +25,8 @@ import java.util.Scanner;
 public class StudentData {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        FileOutputStream outputStream = null;
+        PrintWriter printWriter;
         // Create a LinkedList to store Students
         LinkedList<Student> studentList = new LinkedList<Student>();
 
@@ -66,16 +71,27 @@ public class StudentData {
             userChoice = input.nextLine().toLowerCase();
         }
 
+        input.close();
+
         System.out.println();
 
         // Sort the Students in ascending order
         studentList.sort(new NameComparator());
 
-        for (Student student : studentList) {
-            System.out.println(student.getName());
+        // Output Student data to text file
+        try {
+            outputStream = new FileOutputStream("StudentData.txt");
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Error accessing StudentData.txt -- File not found.");
         }
 
-        input.close();
+        if (outputStream != null) {
+            printWriter = new PrintWriter(outputStream);
+            printStudentData(printWriter, studentList);
+        }
+
+        System.out.println("Student data successfully exported to StudentData.txt");
     }
 
     public static boolean validateGPA(Scanner input, double gpa) {
@@ -103,5 +119,16 @@ public class StudentData {
 
         // Return true if a valid gpa was chosen
         return gpaValid;
+    }
+
+    public static void printStudentData(PrintWriter printWriter, LinkedList<Student> studentList) {
+        printWriter.println("STUDENT DATA (sorted by name):");
+        printWriter.println("------------------------------");
+        for (Student student : studentList) {
+            printWriter.println(student.toString());
+            printWriter.println();
+        }
+
+        printWriter.close();
     }
 }
