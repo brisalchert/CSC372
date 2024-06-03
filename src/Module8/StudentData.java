@@ -90,6 +90,11 @@ public class StudentData {
         System.out.println("Student data successfully exported to StudentData.txt");
     }
 
+    /**
+     * Prompts the user for a GPA value between 0.0 and 4.0, continuing to prompt until receiving valid input
+     * @param input the Scanner used to obtain user input
+     * @return a GPA between 0.0 and 4.0
+     */
     public static double validateGPA(Scanner input) {
         boolean gpaValid = false;
         double gpa = 0;
@@ -120,6 +125,11 @@ public class StudentData {
         return gpa;
     }
 
+    /**
+     * Prints the content of a LinkedList of Students to a text file using a PrintWriter
+     * @param printWriter the PrintWriter for writing the Student data to a file
+     * @param studentList the LinkedList of Students
+     */
     public static void printStudentData(PrintWriter printWriter, LinkedList<Student> studentList) {
         printWriter.println("STUDENT DATA (sorted by name):");
         printWriter.println("------------------------------");
