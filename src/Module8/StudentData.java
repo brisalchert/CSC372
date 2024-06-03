@@ -33,7 +33,7 @@ public class StudentData {
             if (userChoice.equals("y")) {
                 String name;
                 String address;
-                double gpa;
+                double gpa = 0;
 
                 // Get the Student's name
                 System.out.print("Enter student name: ");
@@ -44,16 +44,10 @@ public class StudentData {
                 address = input.nextLine();
 
                 // Get the Student's gpa, validating the input and requesting again on invalid input
-                System.out.print("Enter student GPA: ");
-                try {
-                    gpa = input.nextDouble();
-                }
-                catch (InputMismatchException e) {
-                    System.out.println("Invalid input -- GPA must be a number.");
-                }
-                finally {
-                    // Clear the input for the next iteration of the loop
-                    input.nextLine();
+                boolean gpaValid = validateGPA(input, gpa);
+
+                while (!gpaValid) {
+                    gpaValid = validateGPA(input, gpa);
                 }
             }
             else {
@@ -64,5 +58,32 @@ public class StudentData {
             System.out.print("Enter data for a new student? (Y/N): ");
             userChoice = input.nextLine().toLowerCase();
         }
+    }
+
+    public static boolean validateGPA(Scanner input, double gpa) {
+        boolean gpaValid = false;
+
+        System.out.print("Enter student GPA: ");
+        try {
+            gpa = input.nextDouble();
+
+            // Check that the GPA is within the valid range (0.0 - 4.0)
+            if (gpa < 0 || gpa > 4) {
+                System.out.println("Invalid input -- GPA must be between 0.0 and 4.0.");
+            }
+            else {
+                gpaValid = true;
+            }
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Invalid input -- GPA must be a number.");
+        }
+        finally {
+            // Clear the input line for the next iteration of the loop
+            input.nextLine();
+        }
+
+        // Return true if a valid gpa was chosen
+        return gpaValid;
     }
 }
